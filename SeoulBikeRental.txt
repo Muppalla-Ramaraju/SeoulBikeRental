@@ -1,0 +1,77 @@
+C:\Users\ram\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe -m pip install --upgrade pip my python path
+
+
+Table 1: Weather Data
+
+ForecastID (Primary Key)
+Date (Foreign Key referencing Calendar Data)
+Temperature(°C)
+Humidity(%)
+Wind speed (m/s)
+Visibility (10m)
+Dew point temperature(°C)
+Solar Radiation (MJ/m2)
+Rainfall(mm)
+Snowfall (cm)
+
+Table 2: Bike Rental Data
+
+RentalID (Primary Key)
+Date (Foreign Key referencing Calendar Data)
+Hour
+Rented Bike Count
+Table 3: Calendar Data
+
+Date (Primary Key)
+Seasons
+Holiday
+Functioning Day
+In this design:
+
+The "Date" column in the Weather Data and Bike Rental Data tables is a foreign key that references the "Date" column in the Calendar Data table. This allows you to associate each weather or bike rental record with the relevant date-related information such as seasons, holidays, and functioning days.
+
+Each table has its own primary key (WeatherID in Weather Data and RentalID in Bike Rental Data) to uniquely identify records within that table.
+
+This design is suitable when you want to centralize date-related information in the Calendar Data table and use foreign keys in other tables to establish relationships while maintaining data integrity. It's a common practice in relational database design when multiple tables share the same reference data.
+
+CREATE TABLE Calendar (Date date primary key, Season Varchar(32), Holiday Varchar(32), FunctioningDay boolean)
+
+weather_create = ("""CREATE TABLE IF NOT EXISTS Weather (ForecastID int primary key, 
+Date date, 
+Temperature int, 
+Humidity Decimal(4,2), 
+WindSpeedinmps int, 
+Visibility int, 
+DewPtTemp int, 
+SolarRad(MJ/m2) int, 
+RainfallinMM int, 
+SnowfallinCM int, 
+FOREIGN KEY(Date) references Calendar(Date))""");
+
+CREATE TABLE RentalBike (RentalID int primary key, Date date, Hours int, RentedBikeCount int);
+
+pandas read_csv
+
+CREATE TABLE IF NOT EXISTS calendar(
+Date date primary key,
+Seasons Varchar(32),
+Holiday Varchar(32),
+FunctionngDay Boolean
+)
+
+D:\DataEnggProject\SeoulBikeData.csv
+
+
+\copy <table_name> from '</path/to/file/filename.csv>' delimiter ',' CSV HEADER;
+
+\copy calendar from 'D:/DataEnggProject/Calendar.csv' delimiter ',' CSV HEADER;
+
+
+ALTER TABLE calendar DROP PRIMARY KEY date; calendar
+
+ALTER TABLE weather
+ALTER COLUMN temperature TYPE float;
+DECIMAL(precision, scale)
+
+
+build visualizations from this data using powerbi/tableau
